@@ -203,7 +203,7 @@ func (c *Client) DoPostBytesRaw(url string, contentType string, body io.Reader) 
 		req.Header.Set(key, value)
 	}
 
-	resp, err = client.Do(req)
+	resp, err = c.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -240,7 +240,7 @@ func (c *Client) doGetBytesRawWithoutCheck(url string) ([]byte, error) {
 		req.Header.Set(key, value)
 	}
 
-	resp, err := client.Do(req)
+	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
